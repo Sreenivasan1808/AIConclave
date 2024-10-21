@@ -1,27 +1,31 @@
 const mongoose=require("mongoose")
 const studentSchema=new mongoose.Schema({
-    Name:{
+    studentName:{
         type:String,
         required:true
     },
-    Standard:{
+    standard:{
         type:String,
         required:true
     },
-    Stream:{
+    stream:{
         type:String,
         required:true
     }
 })
 const schoolSchema=mongoose.model({
-    SchoolName:{
+    schoolName:{
         type:String,
         required:true
     },
-    FacultyName:{
+    facultyName:{
         type:String,
         required:true
     },
-    Students:[studentSchema]
+    studentCount:{
+        type:Number,
+        required:true
+    },
+    studentList:[studentSchema]
 })
 module.exports=mongoose.model("School",schoolSchema)
