@@ -1,5 +1,5 @@
 const mongoose=require("mongoose")
-const studentSchema=mongoose.model({
+const studentSchema=mongoose.Schema({
     studentName:{
         type:String,
         required:true
@@ -13,7 +13,7 @@ const studentSchema=mongoose.model({
         required:true
     }
 })
-const collegeSchema=mongoose.model({
+const collegeSchema=mongoose.Schema({
     collegeName:{
         type:String,
         required:true

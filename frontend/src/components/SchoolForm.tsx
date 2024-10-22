@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { registerSchool } from "../api/api";
 
 interface SchoolForm {
   schoolName: String;
@@ -18,6 +19,7 @@ const SchoolForm = () => {
     studentCount: 0,
     studentList: Array.prototype,
   });
+  const [submitResponse, setSubmitResponse] = useState("");
 
   const handleInputChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
@@ -54,14 +56,22 @@ const SchoolForm = () => {
       ...prevData,
       studentList: [
         ...prevData.studentList,
-        { studentName: "", yearOfStudy: "", branch: "" },
+        { studentName: "", standard: "XI", stream: "Science" },
       ],
     }));
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     console.log(formData);
+    let response;
+    try {
+      response = await registerSchool(formData);
+      setSubmitResponse(response.message);
+      
+    } catch (error) {
+      setSubmitResponse(response.message);
+    }
   };
 
   return (
@@ -168,7 +178,7 @@ const SchoolForm = () => {
                           className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200 bg-transparent"
                           onChange={(e) =>
                             handleStudentChange(index, {
-                              name: "yearOfStudy",
+                              name: "standard",
                               value: e.target.selectedOptions[0].value,
                             })
                           }
@@ -184,7 +194,7 @@ const SchoolForm = () => {
                           className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200 bg-transparent"
                           onChange={(e) =>
                             handleStudentChange(index, {
-                              name: "branch",
+                              name: "stream",
                               value: e.target.selectedOptions[0].value,
                             })
                           }
@@ -222,6 +232,7 @@ const SchoolForm = () => {
             Submit
           </button>
         </div>
+        {submitResponse.includes("success") ? <p className="text-sm text-green-600 text-center">{submitResponse}</p> : <p className="text-sm text-red-600 text-center">{submitResponse}</p>}
       </form>
     </div>
   );

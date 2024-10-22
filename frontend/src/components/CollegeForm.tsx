@@ -62,15 +62,26 @@ const CollegeForm = () => {
       ...prevData,
       studentList: [
         ...prevData.studentList,
-        { studentName: "", yearOfStudy: "", branch: "" },
+        { studentName: "", yearOfStudy: "I", branch: "CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)" },
       ],
     }));
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     console.log(formData);
-    const response = registerCollege(formData);
+    let response;
+    try {
+      response = await registerCollege(formData);
+      console.log(response);
+      
+      setSubmitResponse(response.message);
+      
+    } catch (error) {
+      console.log(response);
+      
+      setSubmitResponse(response.message);   
+    }
   };
 
   return (
@@ -169,6 +180,7 @@ const CollegeForm = () => {
                         <select
                           name="yearOfStudy"
                           id="yearOfStudy"
+                          value={formData.studentList[index].yearOfStudy}
                           className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200 bg-transparent"
                           onChange={(e) => handleStudentChange(index, {name: "yearOfStudy", value: e.target.selectedOptions[0].value})}
                         >
@@ -220,6 +232,7 @@ const CollegeForm = () => {
             Submit
           </button>
         </div>
+        {submitResponse.includes("success") ? <p className="text-sm text-green-600 text-center">{submitResponse}</p> : <p className="text-sm text-red-600 text-center">{submitResponse}</p>}
       </form>
     </div>
   );

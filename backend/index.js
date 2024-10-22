@@ -5,6 +5,7 @@ const cors = require("cors");
 const bodyParser = require('body-parser')
 
 
+
 const app = express();
 
 dotenv.config();
@@ -27,3 +28,9 @@ db.once("open", () => {
     console.log(`Server running on http://localhost:${PORT}`);
   });
 });
+
+const schoolRoutes = require("./routes/schoolRoutes");
+const collegeRoutes = require("./routes/collegeRoutes");
+
+app.use("/school", schoolRoutes);
+app.use("/college", collegeRoutes);

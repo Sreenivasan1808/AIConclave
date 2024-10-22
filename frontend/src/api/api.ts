@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const registerCollege = async (data:any) => {
-    const response = await axios.post("", data);
+    const response = await axios.post("http://localhost:8000/college/registerCollege", data);
     if(response.status == 200){
         return "Success";
     }else{
@@ -9,6 +9,11 @@ export const registerCollege = async (data:any) => {
     }
 } 
 
-export const registerSchool = () => {
-    
+export const registerSchool = async (data:any) => {
+    const response = await axios.post("http://localhost:8000/school/registerSchool", data);
+    if(response.status == 200){
+        return "Success";
+    }else{
+        return response.data;
+    }
 } 

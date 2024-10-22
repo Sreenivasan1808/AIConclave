@@ -13,7 +13,7 @@ const studentSchema=new mongoose.Schema({
         required:true
     }
 })
-const schoolSchema=mongoose.model({
+const schoolSchema=mongoose.Schema({
     schoolName:{
         type:String,
         required:true
