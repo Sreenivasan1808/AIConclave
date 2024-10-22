@@ -9,8 +9,13 @@ const collegePdf = async (req,res)=> {
     const data =await collegeModel.find({collegeName:req.query.collegeName})
     const doc = new PDFDocument();
 
-    // Pipe the PDF to a file
-    doc.pipe(fs.createWriteStream('output_with_borders.pdf'));
+    let filename = 'output_with_borders.pdf';
+    filename = encodeURIComponent(filename) + '.pdf';
+
+    // Set headers to download the PDF
+    res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"');
+    res.setHeader('Content-type', 'application/pdf');
+    doc.pipe(res);
 
     // Add a title/header
     doc.fontSize(18).text('Mepco Schlenk Engineering College', { align: 'center' });
@@ -88,8 +93,13 @@ const schoolPdf=async(req,res)=> {
     const data =await schoolgeModel.find({schoolgName:req.query.schoolName})
     const doc = new PDFDocument();
 
-    // Pipe the PDF to a file
-    doc.pipe(fs.createWriteStream('output_with_borders.pdf'));
+    let filename = 'output_with_borders.pdf';
+    filename = encodeURIComponent(filename) + '.pdf';
+
+    // Set headers to download the PDF
+    res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"');
+    res.setHeader('Content-type', 'application/pdf');
+    doc.pipe(res);
 
     // Add a title/header
     doc.fontSize(18).text('Mepco Schlenk Engineering College', { align: 'center' });
