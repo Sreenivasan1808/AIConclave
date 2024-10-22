@@ -94,7 +94,7 @@ const SchoolForm = () => {
             name="schoolName"
             value={formData.schoolName}
             onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200"
             required
           />
         </div>
@@ -113,7 +113,7 @@ const SchoolForm = () => {
             name="facultyName"
             value={formData.facultyName}
             onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200"
             required
           />
         </div>
@@ -132,7 +132,7 @@ const SchoolForm = () => {
             name="studentCount"
             value={formData.studentCount}
             onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200"
             required
           />
         </div>
@@ -167,7 +167,7 @@ const SchoolForm = () => {
                               value: e.target.value,
                             })
                           }
-                          className="w-full px-1 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                          className="w-full px-1 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200"
                           required
                         />
                       </td>
@@ -175,7 +175,7 @@ const SchoolForm = () => {
                         <select
                           name="yearOfStudy"
                           id="yearOfStudy"
-                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200 bg-transparent"
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200 bg-transparent"
                           onChange={(e) =>
                             handleStudentChange(index, {
                               name: "standard",
@@ -191,7 +191,7 @@ const SchoolForm = () => {
                         <select
                           name="branch"
                           id="branch"
-                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200 bg-transparent"
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200 bg-transparent"
                           onChange={(e) =>
                             handleStudentChange(index, {
                               name: "stream",

@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<App />} />
         <Route path="/admin" element={<Dashboard />} />
       </Routes> */}
-      <div className="w-[80%] m-2 fixed top-0 z-10">
+      <div className="w-[60%] m-2 fixed top-0 z-10">
         <Navbar></Navbar>
       </div>
       <Hero/>

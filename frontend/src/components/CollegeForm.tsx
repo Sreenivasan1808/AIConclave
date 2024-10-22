@@ -104,7 +104,7 @@ const CollegeForm = () => {
             name="collegeName"
             value={formData.collegeName}
             onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200"
             required
           />
         </div>
@@ -123,7 +123,7 @@ const CollegeForm = () => {
             name="facultyName"
             value={formData.facultyName}
             onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200"
             required
           />
         </div>
@@ -142,7 +142,7 @@ const CollegeForm = () => {
             name="studentCount"
             value={formData.studentCount}
             onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200"
             required
           />
         </div>
@@ -172,7 +172,7 @@ const CollegeForm = () => {
                           type="text"
                           name="studentName"
                           onChange={(e) => handleStudentChange(index, {name: e.target.name, value: e.target.value})}
-                          className="w-full px-1 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                          className="w-full px-1 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200"
                           required
                         />
                       </td>
@@ -181,7 +181,7 @@ const CollegeForm = () => {
                           name="yearOfStudy"
                           id="yearOfStudy"
                           value={formData.studentList[index].yearOfStudy}
-                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200 bg-transparent"
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200 bg-transparent"
                           onChange={(e) => handleStudentChange(index, {name: "yearOfStudy", value: e.target.selectedOptions[0].value})}
                         >
                           <option value="I">I</option>
@@ -194,7 +194,7 @@ const CollegeForm = () => {
                         <select
                           name="branch"
                           id="branch"
-                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200 bg-transparent"
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200 bg-transparent"
                           onChange={(e) => handleStudentChange(index, {name: "branch", value: e.target.selectedOptions[0].value})}
                         >
                           <option value="CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)">CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)</option>
