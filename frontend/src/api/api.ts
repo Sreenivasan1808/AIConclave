@@ -17,3 +17,21 @@ export const registerSchool = async (data:any) => {
         return response.data;
     }
 } 
+
+export const getSchoolCount = async () => {
+    const response = await axios.get("http://localhost:8000/school/getSchoolCount");
+    if(response.status == 200){
+        return response.data;
+    }else{
+        return null;
+    }
+}
+
+export const getCollegeCount = async () => {
+    const response = await axios.get("http://localhost:8000/college/getCollegeCount");
+    if(response.status == 200){
+        return response.data;
+    }else{
+        return null;
+    }
+}

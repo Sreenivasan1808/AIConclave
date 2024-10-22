@@ -9,7 +9,7 @@ const Hero = () => {
         <h6 className='text-white text-xl m-0 p-0'>and</h6>
         <h6 className='text-white text-xl'>Mepco Schlenk Engineering College presents</h6>
         </div>
-        <h1 className='text-white uppercase text-8xl'>AI Conclave</h1>
+        <h1 className='text-yellow-400 uppercase text-8xl'>AI Conclave</h1>
 
     </div>
   )
