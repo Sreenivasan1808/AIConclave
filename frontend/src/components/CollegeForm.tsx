@@ -8,6 +8,7 @@ interface CollegeForm {
   studentList: {
     studentName: String;
     yearOfStudy: String;
+    batch: Number;
     branch: String;
   }[];
 }
@@ -22,7 +23,9 @@ const CollegeForm = () => {
   const [submitResponse, setSubmitResponse] = useState("");
 
   const handleInputChange = (e: { target: { name: any; value: any } }) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+    if(name == "collegeName")
+      value = value.toUpperCase();
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -41,10 +44,7 @@ const CollegeForm = () => {
     }
   };
 
-  const handleStudentChange = (
-    index: number,
-    e: any
-  ) => {
+  const handleStudentChange = (index: number, e: any) => {
     const { name, value } = e;
     const updatedStudents = [...formData.studentList];
     updatedStudents[index] = { ...updatedStudents[index], [name]: value };
@@ -54,15 +54,17 @@ const CollegeForm = () => {
     }));
   };
 
-
-  
-
   const addStudent = () => {
     setFormData((prevData) => ({
       ...prevData,
       studentList: [
         ...prevData.studentList,
-        { studentName: "", yearOfStudy: "I", branch: "CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)" },
+        {
+          studentName: "",
+          yearOfStudy: "I",
+          batch:1,
+          branch: "CSE",
+        },
       ],
     }));
   };
@@ -74,15 +76,58 @@ const CollegeForm = () => {
     try {
       response = await registerCollege(formData);
       console.log(response);
-      
+
       setSubmitResponse(response.message);
-      
     } catch (error) {
       console.log(response);
-      
-      setSubmitResponse(response.message);   
+
+      setSubmitResponse(response.message);
     }
   };
+
+  const batch1Options = (
+    <>
+      <option value="CSE">CSE</option>
+      <option value="IT">IT</option>
+      <option value="AI&DS">AI&DS</option>
+      <option value="MCA">MCA</option>
+      <option value="BSc CS">BSc CS</option>
+      <option value="BSc IT">BSc IT</option>
+      <option value="BSc CA">BSc CA</option>
+      <option value="BSc MAT">BSc MAT</option>
+    </>
+  );
+  const batch2Options = (
+    <>
+      <option value="EEE">EEE</option>
+      <option value="ECE">ECE</option>
+      <option value="MEC">MEC</option>
+      <option value="BME">BME</option>
+      <option value="BT">BT</option>
+      <option value="BSc PHY">BSc PHY</option>
+      <option value="BSc CHE">BSc CHE</option>
+      <option value="BSc BIO">BSc BIO</option>
+      <option value="BSc BOT">BSc BOT</option>
+      <option value="BSc ZOO">BSc ZOO</option>
+    </>
+  );
+  const batch3Options = (
+    <>
+      <option value="Civil">Civil</option>
+      <option value="Mech">Mech</option>
+      <option value="BArch">BArch</option>
+    </>
+  );
+  const batch4Options = (
+    <>
+      <option value="MBA">MBA</option>
+      <option value="BBA">BBA</option>
+      <option value="BCom">BCom</option>
+      <option value="MCom">MCom</option>
+      <option value="BA Eco">BA Eco</option>
+      <option value="BA Lit">BA Lit</option>
+    </>
+  );
 
   return (
     <div className="p-6 w-full">
@@ -158,6 +203,7 @@ const CollegeForm = () => {
                     <th className="px-4 py-2 border">S.No</th>
                     <th className="px-4 py-2 border">Student Name</th>
                     <th className="px-4 py-2 border">Year of Study</th>
+                    <th className="px-4 py-2 border">Batch</th>
                     <th className="px-4 py-2 border">Branch</th>
                   </tr>
                 </thead>
@@ -171,7 +217,12 @@ const CollegeForm = () => {
                         <input
                           type="text"
                           name="studentName"
-                          onChange={(e) => handleStudentChange(index, {name: e.target.name, value: e.target.value})}
+                          onChange={(e) =>
+                            handleStudentChange(index, {
+                              name: e.target.name,
+                              value: e.target.value,
+                            })
+                          }
                           className="w-full px-1 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200"
                           required
                         />
@@ -182,7 +233,12 @@ const CollegeForm = () => {
                           id="yearOfStudy"
                           value={formData.studentList[index].yearOfStudy}
                           className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200 bg-transparent"
-                          onChange={(e) => handleStudentChange(index, {name: "yearOfStudy", value: e.target.selectedOptions[0].value})}
+                          onChange={(e) =>
+                            handleStudentChange(index, {
+                              name: "yearOfStudy",
+                              value: e.target.selectedOptions[0].value,
+                            })
+                          }
                         >
                           <option value="I">I</option>
                           <option value="II">II</option>
@@ -192,15 +248,46 @@ const CollegeForm = () => {
                       </td>
                       <td className="border px-4 py-2">
                         <select
+                          name="batch"
+                          id="batch"
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200 bg-transparent"
+                          onChange={(e) =>
+                            handleStudentChange(index, {
+                              name: "batch",
+                              value: parseInt(e.target.selectedOptions[0].value),
+                            })
+                          }
+                          value={formData.studentList[index].batch || 1} 
+                        >
+                          <option value={1}>
+                            CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)
+                          </option>
+                          <option value={2}>
+                            EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT,
+                            ZOO,...)
+                          </option>
+                          <option value={3}>Civil, MECH, BArch</option>
+                          <option value={4}>
+                            MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)
+                          </option>
+                        </select>
+                      </td>
+                      <td className="border px-4 py-2">
+                        <select
                           name="branch"
                           id="branch"
                           className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-yellow-200 bg-transparent"
-                          onChange={(e) => handleStudentChange(index, {name: "branch", value: e.target.selectedOptions[0].value})}
+                          onChange={(e) =>
+                            handleStudentChange(index, {
+                              name: "branch",
+                              value: e.target.selectedOptions[0].value,
+                            })
+                          }
                         >
-                          <option value="CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)">CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)</option>
-                          <option value="EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)">EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)</option>
-                          <option value="Civil, MECH, BArch">Civil, MECH, BArch</option>
-                          <option value="MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)">MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)</option>
+                          {formData.studentList[index].batch === 1 && batch1Options}
+                          {formData.studentList[index].batch === 2 && batch2Options}
+                          {formData.studentList[index].batch === 3 && batch3Options}
+                          {formData.studentList[index].batch === 4 && batch4Options}
                         </select>
                       </td>
                     </tr>
@@ -216,12 +303,14 @@ const CollegeForm = () => {
           <button
             type="reset"
             className="w-fit p-4 bg-white text-black py-2 rounded-md border border-black hover:bg-gray-300"
-            onClick={() => {setFormData({
-              collegeName: "",
-              facultyName: "",
-              studentCount: 0,
-              studentList: Array.prototype,
-            })}}
+            onClick={() => {
+              setFormData({
+                collegeName: "",
+                facultyName: "",
+                studentCount: 0,
+                studentList: Array.prototype,
+              });
+            }}
           >
             Clear
           </button>
@@ -232,7 +321,11 @@ const CollegeForm = () => {
             Submit
           </button>
         </div>
-        {submitResponse.includes("success") ? <p className="text-sm text-green-600 text-center">{submitResponse}</p> : <p className="text-sm text-red-600 text-center">{submitResponse}</p>}
+        {submitResponse.includes("success") ? (
+          <p className="text-sm text-green-600 text-center">{submitResponse}</p>
+        ) : (
+          <p className="text-sm text-red-600 text-center">{submitResponse}</p>
+        )}
       </form>
     </div>
   );

@@ -3,6 +3,7 @@ import { getCollegeCount, getSchoolCount } from "../../api/api";
 import CollegeCountTable from "./CollegeCountTable";
 import SchoolCountTable from "./SchoolCountTable";
 import Navbar from "../Navbar";
+import ExcelDownload from "./ExcelDownload";
 
 const Dashboard = () => {
   const [value, setValue] = React.useState("1");
@@ -39,6 +40,7 @@ const Dashboard = () => {
 
         {value === "1" ? <CollegeCountTable /> : <SchoolCountTable />}
       </div>
+
     </div>
   );
 };

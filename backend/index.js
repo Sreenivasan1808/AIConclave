@@ -31,6 +31,8 @@ db.once("open", () => {
 
 const schoolRoutes = require("./routes/schoolRoutes");
 const collegeRoutes = require("./routes/collegeRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 app.use("/school", schoolRoutes);
 app.use("/college", collegeRoutes);
+app.use("/admin", adminRoutes);

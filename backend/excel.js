@@ -1,13 +1,12 @@
 const XLSX = require('xlsx');
 const schoolModel=require("./models/school")
 const collegeModel=require("./models/college")
-const axios=require("axios")
 
 // Sample JSON data
 const schooldownload = async (req, res) => {
     try {
         
-            const data1 = (await schoolModel.find({ schoolName: req.query.schoolName })).studenList;
+            const data1 = (await schoolModel.findOne({ schoolName: req.query.schoolName })).studentList;
             let jsonData = [];
             
             data1.forEach((data)=> { 
@@ -42,8 +41,8 @@ const schooldownload = async (req, res) => {
 };
 const collegedownload = async (req, res) => {
     try {
-        
-            const data1 = (await collegeModel.find({ collegeName: req.query.collegeName })).studenList;
+            console.log(req.query);
+            const data1 = (await collegeModel.findOne({ collegeName: req.query.collegeName })).studentList;
             let jsonData = [];
             
             data1.forEach((data)=> { 
