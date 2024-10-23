@@ -6,8 +6,8 @@ const Navbar = () => {
       <div className="px-3" >AI Conclave</div>  
       <ul
         className="flex list-none gap-6">
-        <li>Home</li>
-        <li>Admin Panel</li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/admin">Admin Panel</a></li>
       </ul>
     </nav>
   )
