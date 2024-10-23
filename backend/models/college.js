@@ -8,6 +8,10 @@ const studentSchema=mongoose.Schema({
         type:String,
         required:true
     },
+    batch:{
+        type:Number,
+        required:true,
+    },
     branch:{
         type:String,
         required:true
