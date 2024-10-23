@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getCollegeCount, getSchoolCount } from "../../api/api";
+import { useState } from "react";
 import CollegeCountTable from "./CollegeCountTable";
 import SchoolCountTable from "./SchoolCountTable";
 import Navbar from "../Navbar";
-import ExcelDownload from "./ExcelDownload";
+
 
 const Dashboard = () => {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = useState("1");
 
   return (
     <div className="flex flex-col justify-center items-center min-h-fit my-8 py-8">

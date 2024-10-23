@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { downloadCollege, downloadCollegeExcel, getCollegeCount,  } from "../../api/api";
 
 interface College {
@@ -9,7 +9,7 @@ interface College {
   mbaCount: number;
 }
 
-const CollegeCountTable = (props: any) => {
+const CollegeCountTable = () => {
   const [collegeData, setCollegeData] = useState<College[] | null>(null);
   const fetchData = async () => {
     const college = await getCollegeCount();

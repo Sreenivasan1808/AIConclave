@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Hero = () => {
   return (
     <div className="min-h-[60vh] w-full bg-[url('/src/assets/AIConclave.png')] flex flex-col justify-center items-center gap-3">

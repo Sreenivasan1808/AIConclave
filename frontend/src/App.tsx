@@ -1,7 +1,4 @@
 import "./App.css";
-import Tab from "./components/Tab";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/admin/Dashboard";
 import Home from "./components/Home";

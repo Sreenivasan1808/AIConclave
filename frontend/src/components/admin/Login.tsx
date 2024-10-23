@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "../Navbar";
 import { verifyAdminLogin } from "../../api/api";
 import { useNavigate } from "react-router-dom";
@@ -29,9 +29,9 @@ const Login = () => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     console.log(formData);
-    let response;
+
     try {
-      response = await verifyAdminLogin(formData);
+      await verifyAdminLogin(formData);
       navigate("/admin");
     } catch (error) {
       setResponse("Invalid credentials");

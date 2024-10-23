@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { registerCollege } from "../api/api";
 
 interface CollegeForm {
@@ -208,7 +208,7 @@ const CollegeForm = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {formData.studentList.map((student, index) => (
+                  {formData.studentList.map((_student, index) => (
                     <tr key={index}>
                       <td className="text-center border border-gray-300">
                         {index + 1}

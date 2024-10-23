@@ -43,7 +43,7 @@ const getCollegeCount = async (req, res) => {
       // Iterate over the student list and count by branch
 
       college.studentList.forEach((student) => {
-        const branch = student.branch;
+        const branch = student.batch;
 
         if (branchCounts[branch]) {
           branchCounts[branch]++;
@@ -54,22 +54,10 @@ const getCollegeCount = async (req, res) => {
 
       counts = {};
 
-      counts["cseCount"] = branchCounts["CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)"]
-        ? branchCounts["CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)"]
-        : 0;
-      counts["eeeCount"] = branchCounts[
-        "EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)"
-      ]
-        ? branchCounts[
-            "EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)"
-          ]
-        : 0;
-      counts["civilCount"] = branchCounts["Civil, MECH, BArch"]
-        ? branchCounts["Civil, MECH, BArch"]
-        : 0;
-      counts["mbaCount"] = branchCounts["MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)"]
-        ? branchCounts["MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)"]
-        : 0;
+      counts["cseCount"] = branchCounts[1] ? branchCounts[1] : 0;
+      counts["eeeCount"] = branchCounts[2] ? branchCounts[2] : 0;
+      counts["civilCount"] = branchCounts[3] ? branchCounts[3] : 0;
+      counts["mbaCount"] = branchCounts[4] ? branchCounts[4] : 0;
 
       // Prepare the result for the current college
 
