@@ -6,7 +6,7 @@ const collegeModel=require("./models/college")
 
 const collegePdf = async (req,res)=> {
     // Create a new PDF document
-    const data =await collegeModel.find({collegeName:req.query.collegeName})
+    const data =await collegeModel.findOne({collegeName:req.query.collegeName})
     const doc = new PDFDocument();
 
     let filename = 'output_with_borders.pdf';
@@ -31,14 +31,14 @@ const collegePdf = async (req,res)=> {
     // Table header coordinates
     let startX = 100;
     let startY = 180;
-    let columnWidth = 150;
+    let columnWidth = 170;
     let rowHeight = 30;
 
     // Draw the table header with borders
     doc.rect(60,startY,40,rowHeight).stroke();
     doc.rect(startX, startY, columnWidth, rowHeight).stroke(); // Name column
     doc.rect(startX + columnWidth, startY, columnWidth, rowHeight).stroke(); // Branch column
-    doc.rect(startX + 2 * columnWidth, startY, columnWidth, rowHeight).stroke(); // Year column
+    doc.rect(startX + 2 * columnWidth, startY, columnWidth/3, rowHeight).stroke(); // Year column
 
     // Add header text
     doc.fontSize(14);
@@ -46,7 +46,7 @@ const collegePdf = async (req,res)=> {
     doc.text('Name', startX + 10, startY + 10);
     doc.text('Branch', startX + columnWidth + 10, startY + 10);
     doc.text('Year', startX + 2 * columnWidth + 10, startY + 10);
-    doc.fontSize(12);
+    doc.fontSize(10);
     // Draw table rows with data and borders
     let i=1;
     let count=0;
@@ -72,12 +72,13 @@ const collegePdf = async (req,res)=> {
         doc.rect(60,y,40,rowHeight).stroke();
         doc.rect(startX, y, columnWidth, rowHeight).stroke(); // Name column
         doc.rect(startX + columnWidth, y, columnWidth, rowHeight).stroke(); // Branch column
-        doc.rect(startX + 2 * columnWidth, y, columnWidth, rowHeight).stroke(); // Year column
+        doc.rect(startX + 2 * columnWidth, y, columnWidth/3, rowHeight).stroke(); // Year column
 
         // Add text inside each cell
+        let branch = row.branch.slice(0,24) + '\n' + row.branch.slice(24);
         doc.text(n,65,y+10);
         doc.text(row.studentName, startX + 10, y + 10);
-        doc.text(row.branch, startX + columnWidth + 10, y + 10);
+        doc.text(branch, startX + columnWidth + 10, y + 10);
         doc.text(row.yearOfStudy, startX + 2 * columnWidth + 10, y + 10);
         count+=1;
         n+=1;
@@ -90,7 +91,9 @@ const collegePdf = async (req,res)=> {
 
 const schoolPdf=async(req,res)=> {
     // Create a new PDF document
-    const data =await schoolgeModel.find({schoolgName:req.query.schoolName})
+    console.log(req.query);
+    const data =await schoolModel.findOne({schoolName:req.query.schoolName})
+    console.log(data)
     const doc = new PDFDocument();
 
     let filename = 'output_with_borders.pdf';
@@ -106,7 +109,7 @@ const schoolPdf=async(req,res)=> {
     doc.moveDown();
     doc.fontSize(14).text(`School Name: ${data.schoolName}`, { align: 'left' });
     doc.moveDown();
-    doc.fontSize(14).text(`Accompanying FacultyName: ${data.facultyName}`, { align: 'left' });
+    doc.fontSize(14).text(`Accompanying Faculty Name: ${data.facultyName}`, { align: 'left' });
 
     // Move to a new line
     doc.moveDown(2);
@@ -130,7 +133,7 @@ const schoolPdf=async(req,res)=> {
     doc.text('Name', startX + 10, startY + 10);
     doc.text('Standard', startX + columnWidth + 10, startY + 10);
     doc.text('Stream', startX + 2 * columnWidth + 10, startY + 10);
-    doc.fontSize(12);
+    doc.fontSize(10);
     // Draw table rows with data and borders
     let i=1;
     let count=0;

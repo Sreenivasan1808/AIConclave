@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCollegeCount } from "../../api/api";
+import { downloadCollege, getCollegeCount } from "../../api/api";
 
 interface College {
   collegeName: string;
@@ -19,7 +19,19 @@ const CollegeCountTable = (props: any) => {
   };
   useEffect(() => {
     fetchData();
+    const interval = setInterval(() => {
+      fetchData();
+    }, 10000)
+    return () => clearInterval(interval);
   }, []);
+
+  const handleDownload = (index:number) => {
+    if(collegeData == null)return;
+    const collegeName = collegeData[index].collegeName;
+
+    downloadCollege(collegeName);
+
+  }
 
   return (
     <div>
@@ -60,7 +72,7 @@ const CollegeCountTable = (props: any) => {
                     college.civilCount +
                     college.mbaCount}
                 </td>
-                <td className="border px-4 py-2">
+                <td className="border px-4 py-2 cursor-pointer text-yellow-600 hover:text-yellow-800"  onClick={() => handleDownload(index)}>
                   <span>Click here</span>
                 </td>
               </tr>
