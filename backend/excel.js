@@ -14,7 +14,7 @@ const schooldownload = async (req, res) => {
             }
         )
 
-            
+            print(jsonData)
 
             // Convert JSON data to worksheet
             const worksheet = XLSX.utils.json_to_sheet(jsonData);
@@ -46,6 +46,8 @@ const collegedownload = async (req, res) => {
             let jsonData = [];
             
             data1.forEach((data)=> { 
+                console.log("jsondata")
+        console.log(data)
                 if(data.batch==1)
                     jsonData.push({studentName:data.studentName,year:data.yearOfStudy,'CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)':'yes','EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)':'','Civil, MECH, Barch':'','MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)':''});
                 else if(data.batch==2)
@@ -56,8 +58,7 @@ const collegedownload = async (req, res) => {
                     jsonData.push({studentName:data.studentName,year:data.yearOfStudy,'CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)':'','EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)':'','Civil, MECH, Barch':'','MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)':'yes'});
             }
         )
-
-            
+        
 
             // Convert JSON data to worksheet
             const worksheet = XLSX.utils.json_to_sheet(jsonData);
