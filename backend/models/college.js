@@ -11,6 +11,10 @@ const studentSchema=mongoose.Schema({
     branch:{
         type:String,
         required:true
+    },
+    batch:{
+        type:Number,
+        required:true
     }
 })
 const collegeSchema=mongoose.Schema({

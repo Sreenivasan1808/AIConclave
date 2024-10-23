@@ -23,7 +23,9 @@ const CollegeForm = () => {
   const [submitResponse, setSubmitResponse] = useState("");
 
   const handleInputChange = (e: { target: { name: any; value: any } }) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+    if(name == "collegeName")
+      value = value.toUpperCase();
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,

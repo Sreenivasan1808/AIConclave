@@ -7,7 +7,7 @@ const Navbar = () => {
       <ul
         className="flex list-none gap-6">
         <li><a href="/">Home</a></li>
-        <li><a href="/admin">Admin Panel</a></li>
+        <li><a href="/login">Admin Panel</a></li>
       </ul>
     </nav>
   )

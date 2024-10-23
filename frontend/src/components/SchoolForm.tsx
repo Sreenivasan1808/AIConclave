@@ -42,7 +42,9 @@ const SchoolForm = () => {
   };
 
   const handleStudentChange = (index: number, e: any) => {
-    const { name, value } = e;
+    let { name, value } = e;
+    if(name == "schoolName")
+      value = value.toUpperCase();
     const updatedStudents = [...formData.studentList];
     updatedStudents[index] = { ...updatedStudents[index], [name]: value };
     setFormData((prevData) => ({
@@ -62,6 +64,7 @@ const SchoolForm = () => {
   };
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
+    
     e.preventDefault();
     console.log(formData);
     let response;

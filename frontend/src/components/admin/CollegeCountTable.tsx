@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { downloadCollege, getCollegeCount } from "../../api/api";
+import { downloadCollege, downloadCollegeExcel, getCollegeCount,  } from "../../api/api";
 
 interface College {
   collegeName: string;
@@ -25,11 +25,19 @@ const CollegeCountTable = (props: any) => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleDownload = (index:number) => {
+  const handlePDFDownload = (index:number) => {
     if(collegeData == null)return;
     const collegeName = collegeData[index].collegeName;
 
     downloadCollege(collegeName);
+
+  }
+
+  const handleExcelDownload = (index:number) => {
+    if(collegeData == null)return;
+    const collegeName = collegeData[index].collegeName;
+
+    downloadCollegeExcel(collegeName);
 
   }
 
@@ -72,8 +80,9 @@ const CollegeCountTable = (props: any) => {
                     college.civilCount +
                     college.mbaCount}
                 </td>
-                <td className="border px-4 py-2 cursor-pointer text-yellow-600 hover:text-yellow-800"  onClick={() => handleDownload(index)}>
-                  <span>Click here</span>
+                <td className="border px-4 py-2 flex flex-col"  >
+                  <span onClick={() => handlePDFDownload(index)} className="cursor-pointer text-yellow-600 hover:text-yellow-800">Download PDF</span>
+                  <span onClick={() => handleExcelDownload(index)} className="cursor-pointer text-yellow-600 hover:text-yellow-800">Download Excel</span>
                 </td>
               </tr>
             ))}
