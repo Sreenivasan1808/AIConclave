@@ -49,13 +49,13 @@ const collegedownload = async (req, res) => {
                 console.log("jsondata")
         console.log(data)
                 if(data.batch==1)
-                    jsonData.push({studentName:data.studentName,year:data.yearOfStudy,'CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)':'yes','EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)':'','Civil, MECH, Barch':'','MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)':''});
+                    jsonData.push({studentName:data.studentName,year:data.yearOfStudy,'CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)(Batch 1)':'yes','EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)(Batch 2)':'','Civil, MECH, Barch(Batch 3)':'','MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)(Batch 4)':''});
                 else if(data.batch==2)
-                    jsonData.push({studentName:data.studentName,year:data.yearOfStudy,'CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)':'','EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)':'yes','Civil, MECH, Barch':'','MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)':''});
+                    jsonData.push({studentName:data.studentName,year:data.yearOfStudy,'CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)(Batch 1)':'','EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)(Batch 2)':'yes','Civil, MECH, Barch(Batch 3)':'','MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)(Batch 4)':''});
                 else if(data.batch==3)
-                    jsonData.push({studentName:data.studentName,year:data.yearOfStudy,'CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)':'','EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)':'','Civil, MECH, Barch':'yes','MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)':''});
+                    jsonData.push({studentName:data.studentName,year:data.yearOfStudy,'CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)(Batch 1)':'','EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)(Batch 2)':'','Civil, MECH, Barch(Batch 3)':'yes','MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)(Batch 4)':''});
                 else if(data.batch==4)
-                    jsonData.push({studentName:data.studentName,year:data.yearOfStudy,'CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)':'','EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)':'','Civil, MECH, Barch':'','MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)':'yes'});
+                    jsonData.push({studentName:data.studentName,year:data.yearOfStudy,'CSE, IT, AI&DS, MCA, BSc(CS,IT,CA,MAT)(Batch 1)':'','EEE, ECE, MEC, BME, BT, BSc (PHY, CHE, BIO, BOT, ZOO,...)(Batch 2)':'','Civil, MECH, Barch(Batch 3)':'','MBA, BBA, BCom, MCom, BA(Eco), BA(Lit)(Batch 4)':'yes'});
             }
         )
         
