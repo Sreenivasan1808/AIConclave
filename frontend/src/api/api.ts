@@ -1,8 +1,8 @@
 import axios from "axios";
 import { saveAs } from "file-saver";
 
-// const SERVER_URL = "https://aiconclave.onrender.com";
-const SERVER_URL = "http://localhost:8000";
+const SERVER_URL = "https://aiconclave.onrender.com";
+// const SERVER_URL = "http://localhost:8000";
 
 export const registerCollege = async (data: any) => {
   const response = await axios.post(
