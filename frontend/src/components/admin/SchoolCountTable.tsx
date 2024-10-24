@@ -9,10 +9,15 @@ interface School {
 
 const SchoolCountTable = () => {
   const [schoolData, setSchoolData] = useState<School[] | null>(null);
+  const [totalArts,  setTotalArts] = useState(0);
+  const [totalScience, setTotalScience] = useState(0);
+
   const fetchData = async () => {
     const school = await getSchoolCount();
     if (school !== null) {
       setSchoolData(school);
+      setTotalArts(school.reduce((acc: any, curr:School) => acc + curr.artsCount, 0));
+      setTotalScience(school.reduce((acc: any, curr: School) => acc + curr.scienceCount, 0));
     }
   };
   const handleDownload = (index: number) => {
@@ -63,6 +68,13 @@ const SchoolCountTable = () => {
               </td>
             </tr>
           ))}
+          <tr>
+            <td></td>
+            <td className="font-semibold border px-4 py-2 text-right">TOTAL</td>
+            <td className="font-semibold border px-4 py-2">{totalScience}</td>
+            <td className="font-semibold border px-4 py-2">{totalArts}</td>
+            <td className="font-semibold border px-4 py-2">{totalScience + totalArts}</td>
+          </tr>
         </tbody>
       </table>
     </div>
