@@ -63,7 +63,7 @@ const CollegeForm = () => {
           studentName: "",
           yearOfStudy: "I",
           batch:1,
-          branch: "CSE",
+          branch: "",
         },
       ],
     }));
