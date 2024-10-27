@@ -101,7 +101,7 @@ export const downloadCollegeExcel = async (collegeName: String) => {
 };
 
 export const downloadSchoolExcel = async (schoolName: string) => {
-  const response = await axios.get(`${SERVER_URL}/school/downloadSchool`, {
+  const response = await axios.get(`${SERVER_URL}/school/downloadExcel`, {
     params: { schoolName: schoolName },
     responseType: "blob"
   });

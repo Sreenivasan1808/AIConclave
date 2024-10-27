@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { downloadSchool, getSchoolCount } from "../../api/api";
+import { downloadSchool, downloadSchoolExcel, getSchoolCount } from "../../api/api";
 
 interface School {
   schoolName: string;
@@ -20,11 +20,18 @@ const SchoolCountTable = () => {
       setTotalScience(school.reduce((acc: any, curr: School) => acc + curr.scienceCount, 0));
     }
   };
-  const handleDownload = (index: number) => {
+  const handlePDFDownload = (index: number) => {
     if (schoolData == null) return;
     const schoolName = schoolData[index].schoolName;
 
     downloadSchool(schoolName);
+  };
+
+  const handleExcelDownload = (index: number) => {
+    if (schoolData == null) return;
+    const schoolName = schoolData[index].schoolName;
+
+    downloadSchoolExcel(schoolName);
   };
   useEffect(() => {
     fetchData();
@@ -62,9 +69,20 @@ const SchoolCountTable = () => {
               </td>
               <td
                 className="border px-4 py-2 cursor-pointer text-yellow-600 hover:text-yellow-800"
-                onClick={() => handleDownload(index)}
+               
               >
-                Click Here
+                <span
+                    onClick={() => handlePDFDownload(index)}
+                    className="cursor-pointer text-yellow-600 hover:text-yellow-800"
+                  >
+                    Download PDF
+                  </span>
+                  <span
+                    onClick={() => handleExcelDownload(index)}
+                    className="cursor-pointer text-yellow-600 hover:text-yellow-800"
+                  >
+                    Download Excel
+                  </span>
               </td>
             </tr>
           ))}
